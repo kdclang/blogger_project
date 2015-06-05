@@ -28,12 +28,12 @@ class ArticlesController < ApplicationController
 	end
 	def update
 		@article = Article.find(params[:id])
-		@article.update(params.require(:article).permit(:title,:body))
+		@article.update(article_params)
 		flash.notice = "Article '#{@article.title}' updated!"
 		redirect_to article_path(@article)
 	end
 	def article_params
-		params.require(:article).permit(:title,:body, :tag_list)
+		params.require(:article).permit(:title,:body, :tag_list, :image)
 	end
 
 
